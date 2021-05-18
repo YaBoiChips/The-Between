@@ -1,7 +1,18 @@
 package frenchbread.thebetween;
 
+import frenchbread.thebetween.core.*;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
+import net.minecraft.item.Item;
+import net.minecraft.util.RegistryKey;
+import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.registry.Registry;
+import net.minecraft.util.registry.WorldGenRegistries;
+import net.minecraft.world.World;
+import net.minecraft.world.biome.Biome;
+import net.minecraft.world.gen.feature.Feature;
+import net.minecraft.world.gen.feature.structure.Structure;
+import net.minecraft.world.gen.surfacebuilders.SurfaceBuilder;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -16,14 +27,17 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import javax.annotation.Nonnull;
+import java.util.Comparator;
 import java.util.stream.Collectors;
 
 // The value here should match an entry in the META-INF/mods.toml file
-@Mod("thebetween")
+@Mod(TheBetween.MOD_ID)
 public class TheBetween {
 
-    // Directly reference a log4j logger.
-    private static final Logger LOGGER = LogManager.getLogger();
+    public static final String MOD_ID = "thebetween";
+    public static final Logger LOGGER = LogManager.getLogger();
+    public static RegistryKey<World> BETWEEN_DIMENSION;
 
     public TheBetween() {
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::commonSetup);
@@ -35,7 +49,13 @@ public class TheBetween {
 
     private void commonSetup(final FMLCommonSetupEvent event) {
         LOGGER.info("HELLO FROM PREINIT");
-        LOGGER.info("DIRT BLOCK >> {}", Blocks.DIRT.getRegistryName());
+        BETWEEN_DIMENSION = RegistryKey.getOrCreateKey(Registry.WORLD_KEY, new ResourceLocation(MOD_ID, "between"));
+        event.enqueueWork(()-> {
+                    TBConfiguredFeatures.registerConfiguredFeatures();
+                    TBConfiguredStructures.registerConfiguredStructures();
+                });
+        TBTrunkPlacers.registerTrunkPlacers();
+        TBConfiguredSurfaceBuilders.register();
     }
 
     private void clientSetup(final FMLClientSetupEvent event) {
@@ -56,6 +76,11 @@ public class TheBetween {
                 collect(Collectors.toList()));
     }
 
+    public static @Nonnull
+    ResourceLocation createResource(String path) {
+        return new ResourceLocation(MOD_ID, path);
+    }
+
     // You can use SubscribeEvent and let the Event Bus discover methods to call
     @SubscribeEvent
     public void onServerStarting(FMLServerStartingEvent event) {
@@ -68,9 +93,56 @@ public class TheBetween {
     @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD)
     public static class RegistryEvents {
         @SubscribeEvent
-        public static void onBlocksRegistry(final RegistryEvent.Register<Block> event) {
+        public static void onBlocksRegistry(RegistryEvent.Register<Block> event) {
             // register a new block here
             LOGGER.info("HELLO from Register Block");
+            TBBlocks.init();
+            TBBlocks.blocks.forEach(block -> event.getRegistry().register(block));
+            TBBlocks.blocks.clear();
+            TBBlocks.blocks = null;
+        }
+        @SubscribeEvent
+        public static void onBiomeRegistry(RegistryEvent.Register<Biome> event) {
+            // register a new block here
+            LOGGER.info("HELLO from Register Block");
+            TBBiomes.init();
+            TBBiomes.biomes.sort(Comparator.comparingInt(TBBiomes.PreserveBiomeOrder::getOrderPosition));
+            TBBiomes.biomes.forEach(preserveBiomeOrder -> event.getRegistry().register(preserveBiomeOrder.getBiome()));
+            TBBiomes.biomes.clear();
+            TBBiomes.biomes = null;
+        }
+        @SubscribeEvent
+        public static void registerStructures(RegistryEvent.Register<Structure<?>> event) {
+            LOGGER.debug("Registering structures...");
+            TBStructures.init();
+            TBStructures.structures.forEach(structure -> event.getRegistry().register(structure));
+            LOGGER.info("Structures registered!");
+        }
+        @SubscribeEvent
+        public static void registerItems(RegistryEvent.Register<Item> event) {
+            LOGGER.debug("Registering items...");
+            TBItems.init();
+            TBItems.items.forEach(item -> event.getRegistry().register(item));
+            TBItems.items.clear();
+            TBItems.items = null;
+        }
+        @SubscribeEvent
+        public static void registerFeatures(RegistryEvent.Register<Feature<?>> event) {
+            LOGGER.debug("Registering features...");
+            TBFeatures.init();
+            TBFeatures.features.forEach(feature -> event.getRegistry().register(feature));
+            TBFeatures.features.clear();
+            TBFeatures.features = null;
+            LOGGER.info("Features registered!");
+        }
+        @SubscribeEvent
+        public static void registerSurfaceBuilders(RegistryEvent.Register<SurfaceBuilder<?>> event) {
+            LOGGER.debug("Registering surface builders...");
+            TBSurfaceBuilders.init();
+            TBSurfaceBuilders.surfaceBuilders.forEach(surfaceBuilder -> event.getRegistry().register(surfaceBuilder));
+            TBSurfaceBuilders.surfaceBuilders.clear();
+            TBSurfaceBuilders.surfaceBuilders = null;
+            LOGGER.info("Surface builders Registered!");
         }
     }
 }
