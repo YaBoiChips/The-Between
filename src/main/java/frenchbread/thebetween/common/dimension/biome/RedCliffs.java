@@ -45,6 +45,7 @@ public class RedCliffs extends BiomeBase {
         GENERATION_SETTINGS.withFeature(GenerationStage.Decoration.UNDERGROUND_ORES, Feature.ORE.withConfiguration(new OreFeatureConfig(OreFeatureConfig.FillerBlockType.BASE_STONE_OVERWORLD, Blocks.IRON_ORE.getDefaultState(), 22)).range(46).square().count(22));
         GENERATION_SETTINGS.withFeature(GenerationStage.Decoration.VEGETAL_DECORATION, TBConfiguredFeatures.TWISTING_VINES_PATCH);
         GENERATION_SETTINGS.withFeature(GenerationStage.Decoration.VEGETAL_DECORATION, TBConfiguredFeatures.RED_CLIFFS_TREE);
+        GENERATION_SETTINGS.withFeature(GenerationStage.Decoration.LAKES, Features.LAKE_LAVA);
 
     }
 }

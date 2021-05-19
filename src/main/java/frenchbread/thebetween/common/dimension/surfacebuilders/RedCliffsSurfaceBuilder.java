@@ -18,7 +18,8 @@ public class RedCliffsSurfaceBuilder extends MountainSurfaceBuilder {
     private static final BlockState NETHERRACK = Blocks.NETHERRACK.getDefaultState();
     private static final BlockState HELL_STONE = TBBlocks.HELL_STONE.getDefaultState();
     private static final BlockState SOUL_SOIL = Blocks.SOUL_SOIL.getDefaultState();
-    public static final SurfaceBuilderConfig HELLSTONE_HELLSTONE_SOULSOIL = new SurfaceBuilderConfig(HELL_STONE, HELL_STONE, SOUL_SOIL);
+    private static final BlockState HELL_DIRT = TBBlocks.HELL_DIRT.getDefaultState();
+    public static final SurfaceBuilderConfig HELLDIRT_HELLSTONE_SOULSOIL = new SurfaceBuilderConfig(HELL_DIRT, HELL_STONE, SOUL_SOIL);
     public static final SurfaceBuilderConfig NETHERRACK_HELLSTONE_SOULSOIL = new SurfaceBuilderConfig(NETHERRACK, HELL_STONE, SOUL_SOIL);
 
 
@@ -29,7 +30,7 @@ public class RedCliffsSurfaceBuilder extends MountainSurfaceBuilder {
 
     public void buildSurface(Random random, IChunk chunkIn, Biome biomeIn, int x, int z, int startHeight, double noise, BlockState defaultBlock, BlockState defaultFluid, int seaLevel, long seed, SurfaceBuilderConfig config) {
         if (noise > 1.5D) {
-            SurfaceBuilder.DEFAULT.buildSurface(random, chunkIn, biomeIn, x, z, startHeight, noise, defaultBlock, defaultFluid, seaLevel, seed, HELLSTONE_HELLSTONE_SOULSOIL);
+            SurfaceBuilder.DEFAULT.buildSurface(random, chunkIn, biomeIn, x, z, startHeight, noise, defaultBlock, defaultFluid, seaLevel, seed, HELLDIRT_HELLSTONE_SOULSOIL);
         } else {
             SurfaceBuilder.DEFAULT.buildSurface(random, chunkIn, biomeIn, x, z, startHeight, noise, defaultBlock, defaultFluid, seaLevel, seed, NETHERRACK_HELLSTONE_SOULSOIL);
         }

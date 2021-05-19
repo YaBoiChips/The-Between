@@ -41,7 +41,11 @@ public class TBItems {
     public static final Item DARKWOOD_LEAVES = createBlockItem(TBBlocks.DARKWOOD_LEAVES, new Item.Properties().group(CREATIVE_TAB));
     public static final Item TELEPORTER_BLOCK = createBlockItem(TBBlocks.BETWEEN_TELEPORTER, new Item.Properties().group(CREATIVE_TAB));
     public static final Item HELL_STONE = createBlockItem(TBBlocks.HELL_STONE, new Item.Properties().group(CREATIVE_TAB));
+    public static final Item HELL_DIRT = createBlockItem(TBBlocks.HELL_DIRT, new Item.Properties().group(CREATIVE_TAB));
     public static final Item FROSTED_STONE = createBlockItem(TBBlocks.FROSTED_STONE, new Item.Properties().group(CREATIVE_TAB));
+    public static final Item HELL_COBBLESTONE = createBlockItem(TBBlocks.HELL_COBBLESTONE, new Item.Properties().group(CREATIVE_TAB));
+    public static final Item FROSTED_COBBLESTONE = createBlockItem(TBBlocks.FROSTED_COBBLESTONE, new Item.Properties().group(CREATIVE_TAB));
+
 
 
     public static Item createItem(Item item, String id) {
