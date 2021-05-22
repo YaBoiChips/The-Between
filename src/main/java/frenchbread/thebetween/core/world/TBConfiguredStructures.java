@@ -1,4 +1,4 @@
-package frenchbread.thebetween.core;
+package frenchbread.thebetween.core.world;
 
 import com.google.common.collect.ImmutableList;
 import frenchbread.thebetween.TheBetween;

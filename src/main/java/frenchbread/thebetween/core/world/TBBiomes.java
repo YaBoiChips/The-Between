@@ -1,4 +1,4 @@
-package frenchbread.thebetween.core;
+package frenchbread.thebetween.core.world;
 
 import frenchbread.thebetween.TheBetween;
 import frenchbread.thebetween.common.dimension.biome.Bog;

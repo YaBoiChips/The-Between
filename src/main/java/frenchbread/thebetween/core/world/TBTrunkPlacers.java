@@ -1,4 +1,4 @@
-package frenchbread.thebetween.core;
+package frenchbread.thebetween.core.world;
 
 import com.mojang.serialization.Codec;
 import frenchbread.thebetween.common.dimension.structures.RedCliffsTrunkPlacer;

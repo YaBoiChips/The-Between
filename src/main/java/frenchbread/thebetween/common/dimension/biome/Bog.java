@@ -1,19 +1,15 @@
 package frenchbread.thebetween.common.dimension.biome;
 
-import frenchbread.thebetween.core.*;
-import net.minecraft.block.BlockState;
+import frenchbread.thebetween.core.world.TBConfiguredFeatures;
 import net.minecraft.block.Blocks;
-import net.minecraft.block.HugeMushroomBlock;
 import net.minecraft.client.audio.BackgroundMusicTracks;
 import net.minecraft.particles.ParticleTypes;
 import net.minecraft.util.SoundEvents;
 import net.minecraft.world.biome.*;
 import net.minecraft.world.gen.GenerationStage;
-import net.minecraft.world.gen.blockstateprovider.SimpleBlockStateProvider;
 import net.minecraft.world.gen.feature.*;
 import net.minecraft.world.gen.surfacebuilders.ConfiguredSurfaceBuilder;
 import net.minecraft.world.gen.surfacebuilders.ConfiguredSurfaceBuilders;
-import net.minecraftforge.common.world.BiomeGenerationSettingsBuilder;
 
 public class Bog extends BiomeBase{
     static final ConfiguredSurfaceBuilder<?> SURFACE_BUILDER = ConfiguredSurfaceBuilders.MYCELIUM;

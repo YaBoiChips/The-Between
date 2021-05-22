@@ -1,6 +1,7 @@
 package frenchbread.thebetween.common.dimension.biome;
 
-import frenchbread.thebetween.core.TBConfiguredSurfaceBuilders;
+import frenchbread.thebetween.core.world.TBConfiguredFeatures;
+import frenchbread.thebetween.core.world.TBConfiguredSurfaceBuilders;
 import net.minecraft.block.Blocks;
 import net.minecraft.client.audio.BackgroundMusicTracks;
 import net.minecraft.entity.EntityClassification;
@@ -14,7 +15,6 @@ import net.minecraft.world.gen.feature.Features;
 import net.minecraft.world.gen.feature.IFeatureConfig;
 import net.minecraft.world.gen.feature.OreFeatureConfig;
 import net.minecraft.world.gen.surfacebuilders.ConfiguredSurfaceBuilder;
-import net.minecraft.world.gen.surfacebuilders.ConfiguredSurfaceBuilders;
 
 public class IceValley extends BiomeBase {
     static final ConfiguredSurfaceBuilder<?> SURFACE_BUILDER = TBConfiguredSurfaceBuilders.ICE_VALLEY;
@@ -47,5 +47,10 @@ public class IceValley extends BiomeBase {
         GENERATION_SETTINGS.withFeature(GenerationStage.Decoration.UNDERGROUND_ORES, Feature.ORE.withConfiguration(new OreFeatureConfig(OreFeatureConfig.FillerBlockType.BASE_STONE_OVERWORLD, Blocks.IRON_ORE.getDefaultState(), 22)).range(46).square().count(22));
         GENERATION_SETTINGS.withFeature(GenerationStage.Decoration.SURFACE_STRUCTURES, Feature.ICE_SPIKE.withConfiguration(IFeatureConfig.NO_FEATURE_CONFIG).withPlacement(Features.Placements.HEIGHTMAP_PLACEMENT).count(1));
         SPAWN_SETTINGS.withSpawner(EntityClassification.AMBIENT, new MobSpawnInfo.Spawners(EntityType.SNOW_GOLEM, 102, 4, 4));
+        GENERATION_SETTINGS.withFeature(GenerationStage.Decoration.VEGETAL_DECORATION, TBConfiguredFeatures.SNOWDROP_PATCH);
+        GENERATION_SETTINGS.withFeature(GenerationStage.Decoration.SURFACE_STRUCTURES, TBConfiguredFeatures.BIG_COLD_ROCK);
+        GENERATION_SETTINGS.withFeature(GenerationStage.Decoration.SURFACE_STRUCTURES, TBConfiguredFeatures.BIG_COLD_ROCK);
+        GENERATION_SETTINGS.withFeature(GenerationStage.Decoration.SURFACE_STRUCTURES, TBConfiguredFeatures.BIG_COLD_ROCK);
+
     }
 }

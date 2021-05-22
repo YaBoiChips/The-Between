@@ -45,8 +45,26 @@ public class TBItems {
     public static final Item FROSTED_STONE = createBlockItem(TBBlocks.FROSTED_STONE, new Item.Properties().group(CREATIVE_TAB));
     public static final Item HELL_COBBLESTONE = createBlockItem(TBBlocks.HELL_COBBLESTONE, new Item.Properties().group(CREATIVE_TAB));
     public static final Item FROSTED_COBBLESTONE = createBlockItem(TBBlocks.FROSTED_COBBLESTONE, new Item.Properties().group(CREATIVE_TAB));
+    public static final Item DUNGEON_GATE_KEY = createBlockItem(TBBlocks.DUNGEON_GATE_KEY, new Item.Properties().group(CREATIVE_TAB));
+    public static final Item DUNGEON_GATE_KEY_2 = createBlockItem(TBBlocks.DUNGEON_GATE_KEY_2, new Item.Properties().group(CREATIVE_TAB));
+    public static final Item DUNGEON_GATE_KEY_3 = createBlockItem(TBBlocks.DUNGEON_GATE_KEY_3, new Item.Properties().group(CREATIVE_TAB));
+    public static final Item DUNGEON_GATE_FRAME = createBlockItem(TBBlocks.DUNGEON_GATE_FRAME, new Item.Properties().group(CREATIVE_TAB));
+    public static final Item SNOWDROP = createBlockItem(TBBlocks.SNOWDROP, new Item.Properties().group(CREATIVE_TAB));
 
+    public static final Item DUNGEON_KEY_1 = createItem(new Item(new Item.Properties().group(CREATIVE_TAB)), "dungeon_key_1");
+    public static final Item DUNGEON_KEY_2 = createItem(new Item(new Item.Properties().group(CREATIVE_TAB)), "dungeon_key_2");
+    public static final Item DUNGEON_KEY_3 = createItem(new Item(new Item.Properties().group(CREATIVE_TAB)), "dungeon_key_3");
 
+    //tall forest
+    public static final Item TALL_FOREST_DUNGEON_BLOCK = createBlockItem(TBBlocks.TALL_FOREST_DUNGEON_BLOCK, new Item.Properties().group(CREATIVE_TAB));
+    public static final Item MOSSY_TALL_FOREST_DUNGEON_BLOCK = createBlockItem(TBBlocks.MOSSY_TALL_FOREST_DUNGEON_BLOCK, new Item.Properties().group(CREATIVE_TAB));
+    public static final Item CRACKED_TALL_FOREST_DUNGEON_BLOCK = createBlockItem(TBBlocks.CRACKED_TALL_FOREST_DUNGEON_BLOCK, new Item.Properties().group(CREATIVE_TAB));
+    public static final Item TALL_FOREST_DUNGEON_STAIRS = createBlockItem(TBBlocks.TALL_FOREST_DUNGEON_STAIRS, new Item.Properties().group(CREATIVE_TAB));
+    public static final Item MOSSY_TALL_FOREST_DUNGEON_STAIRS = createBlockItem(TBBlocks.MOSSY_TALL_FOREST_DUNGEON_STAIRS, new Item.Properties().group(CREATIVE_TAB));
+    public static final Item CRACKED_TALL_FOREST_DUNGEON_STAIRS = createBlockItem(TBBlocks.CRACKED_TALL_FOREST_DUNGEON_STAIRS, new Item.Properties().group(CREATIVE_TAB));
+    public static final Item TALL_FOREST_DUNGEON_SLAB = createBlockItem(TBBlocks.TALL_FOREST_DUNGEON_SLAB, new Item.Properties().group(CREATIVE_TAB));
+    public static final Item MOSSY_TALL_FOREST_DUNGEON_SLAB = createBlockItem(TBBlocks.MOSSY_TALL_FOREST_DUNGEON_SLAB, new Item.Properties().group(CREATIVE_TAB));
+    public static final Item CRACKED_TALL_FOREST_DUNGEON_SLAB = createBlockItem(TBBlocks.CRACKED_TALL_FOREST_DUNGEON_SLAB, new Item.Properties().group(CREATIVE_TAB));
 
     public static Item createItem(Item item, String id) {
         return createItem(item, TheBetween.createResource(id));

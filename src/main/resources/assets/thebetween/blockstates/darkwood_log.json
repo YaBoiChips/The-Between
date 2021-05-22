@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "axis=z": {
+      "model": "thebetween:block/darkwood_log",
+      "x": 90
+    },
+    "axis=x": {
+      "model": "thebetween:block/darkwood_log",
+      "x": 90,
+      "y": 90
+    },
+    "axis=y": {
+      "model": "thebetween:block/darkwood_log"
+    }
+  }
+}

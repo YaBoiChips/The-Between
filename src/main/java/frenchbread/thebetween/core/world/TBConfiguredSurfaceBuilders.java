@@ -1,4 +1,4 @@
-package frenchbread.thebetween.core;
+package frenchbread.thebetween.core.world;
 
 import net.minecraft.block.Blocks;
 import net.minecraft.util.registry.WorldGenRegistries;

@@ -1,25 +1,13 @@
-package frenchbread.thebetween.core;
+package frenchbread.thebetween.core.world;
 
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableMap;
 import frenchbread.thebetween.TheBetween;
-import frenchbread.thebetween.common.dimension.structures.BigBogRock;
 import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.registry.WorldGenRegistries;
 import net.minecraft.world.gen.GenerationStage;
 import net.minecraft.world.gen.feature.IFeatureConfig;
-import net.minecraft.world.gen.feature.NoFeatureConfig;
 import net.minecraft.world.gen.feature.structure.Structure;
-import net.minecraft.world.gen.settings.DimensionStructuresSettings;
-import net.minecraft.world.gen.settings.StructureSeparationSettings;
-import net.minecraftforge.fml.RegistryObject;
-import net.minecraftforge.registries.DeferredRegister;
-import net.minecraftforge.registries.ForgeRegistries;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class TBStructures {
     public static List<Structure<?>> structures = new ArrayList<>();

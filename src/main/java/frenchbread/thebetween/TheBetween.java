@@ -1,13 +1,18 @@
 package frenchbread.thebetween;
 
+import frenchbread.thebetween.client.renderers.entities.StoneGolemRenderer;
+import frenchbread.thebetween.client.renderers.worldrenderers.TBCutOutTextures;
+import frenchbread.thebetween.common.entities.AbstractStoneGolemEntity;
+import frenchbread.thebetween.common.entities.StoneGolemBrute;
 import frenchbread.thebetween.core.*;
+import frenchbread.thebetween.core.world.*;
 import net.minecraft.block.Block;
-import net.minecraft.block.Blocks;
+import net.minecraft.entity.EntityType;
+import net.minecraft.entity.ai.attributes.GlobalEntityTypeAttributes;
 import net.minecraft.item.Item;
 import net.minecraft.util.RegistryKey;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.registry.Registry;
-import net.minecraft.util.registry.WorldGenRegistries;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.gen.feature.Feature;
@@ -17,6 +22,7 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.InterModComms;
+import net.minecraftforge.fml.client.registry.RenderingRegistry;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
@@ -56,14 +62,17 @@ public class TheBetween {
                 });
         TBTrunkPlacers.registerTrunkPlacers();
         TBConfiguredSurfaceBuilders.register();
+        GlobalEntityTypeAttributes.put(TBEntities.TALL_FOREST_STONE_GOLEM, AbstractStoneGolemEntity.setCustomAttributes().create());
     }
 
     private void clientSetup(final FMLClientSetupEvent event) {
         LOGGER.info("Got game settings {}", event.getMinecraftSupplier().get().gameSettings);
+        TBCutOutTextures.registerCutOuts();
+        RenderingRegistry.registerEntityRenderingHandler(TBEntities.TALL_FOREST_STONE_GOLEM, StoneGolemRenderer::new);
     }
 
     private void enqueueIMC(final InterModEnqueueEvent event) {
-        InterModComms.sendTo("thebetween", "helloworld", () -> {
+        InterModComms.sendTo(MOD_ID, "helloworld", () -> {
             LOGGER.info("Hello world from the MDK");
             return "Hello world";
         });
@@ -144,5 +153,14 @@ public class TheBetween {
             TBSurfaceBuilders.surfaceBuilders = null;
             LOGGER.info("Surface builders Registered!");
         }
+    @SubscribeEvent
+    public static void registerEntities(final RegistryEvent.Register<EntityType<?>> event) {
+        LOGGER.debug("Preparing Entities");
+        TBEntities.init();
+        TBEntities.entities.forEach(entityType -> event.getRegistry().register(entityType));
+        TBEntities.entities.clear();
+        TBEntities.entities = null;
+        LOGGER.info("Entities registered!!");
     }
+}
 }

@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "thebetween:block/darkwood_leaves"
+  }
+}

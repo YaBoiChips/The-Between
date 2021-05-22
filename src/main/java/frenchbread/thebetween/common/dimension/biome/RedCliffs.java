@@ -1,8 +1,7 @@
 package frenchbread.thebetween.common.dimension.biome;
 
-import frenchbread.thebetween.core.TBConfiguredFeatures;
-import frenchbread.thebetween.core.TBConfiguredStructures;
-import frenchbread.thebetween.core.TBConfiguredSurfaceBuilders;
+import frenchbread.thebetween.core.world.TBConfiguredFeatures;
+import frenchbread.thebetween.core.world.TBConfiguredSurfaceBuilders;
 import net.minecraft.block.Blocks;
 import net.minecraft.client.audio.BackgroundMusicTracks;
 import net.minecraft.particles.ParticleTypes;

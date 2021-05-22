@@ -1,24 +1,19 @@
 package frenchbread.thebetween.core;
 
 import frenchbread.thebetween.TheBetween;
-import frenchbread.thebetween.common.block.TeleporterBlock;
+import frenchbread.thebetween.common.block.*;
 import net.minecraft.block.*;
 import net.minecraft.block.material.Material;
-import net.minecraft.data.BlockTagsProvider;
-import net.minecraft.data.DataGenerator;
-import net.minecraft.data.IDataProvider;
+import net.minecraft.potion.Effects;
 import net.minecraft.util.RegistryKey;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.world.World;
 import net.minecraftforge.common.ToolType;
-import net.minecraftforge.common.data.ExistingFileHelper;
 
 import javax.annotation.Nonnull;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Stream;
 
 public class TBBlocks {
 
@@ -33,6 +28,24 @@ public class TBBlocks {
     public static final Block FROSTED_COBBLESTONE = createCobbleBlock("frosted_cobblestone");
     public static final Block HELL_DIRT = createDirtBlock("hell_dirt");
     public static final Block FROSTED_STONE = createStoneBlock("frosted_stone");
+    public static final Block DUNGEON_GATE_KEY = registerBlock("dungeon_gate_key", new DungeonGateKey(AbstractBlock.Properties.from(Blocks.BEDROCK)));
+    public static final Block DUNGEON_GATE_KEY_2 = registerBlock("dungeon_gate_key_2", new DungeonGateKey2(AbstractBlock.Properties.from(Blocks.BEDROCK)));
+    public static final Block DUNGEON_GATE_KEY_3 = registerBlock("dungeon_gate_key_3", new DungeonGateKey3(AbstractBlock.Properties.from(Blocks.BEDROCK)));
+    public static final Block DUNGEON_GATE_FRAME = registerBlock("dungeon_gate_frame", new Block(AbstractBlock.Properties.from(Blocks.BEDROCK)));
+
+    //tall forest
+    public static final Block TALL_FOREST_DUNGEON_BLOCK = registerBlock("tall_forest_dungeon_block", new Block(AbstractBlock.Properties.from(Blocks.BEDROCK)));
+    public static final Block MOSSY_TALL_FOREST_DUNGEON_BLOCK = registerBlock("mossy_tall_forest_dungeon_block", new Block(AbstractBlock.Properties.from(Blocks.BEDROCK)));
+    public static final Block CRACKED_TALL_FOREST_DUNGEON_BLOCK = registerBlock("cracked_tall_forest_dungeon_block", new Block(AbstractBlock.Properties.from(Blocks.BEDROCK)));
+    public static final Block TALL_FOREST_DUNGEON_STAIRS = registerBlock("tall_forest_dungeon_stairs", new StairsBlock(Blocks.BEDROCK.getDefaultState(), AbstractBlock.Properties.from(Blocks.BEDROCK)));
+    public static final Block MOSSY_TALL_FOREST_DUNGEON_STAIRS = registerBlock("mossy_tall_forest_dungeon_stairs", new StairsBlock(Blocks.BEDROCK.getDefaultState(), AbstractBlock.Properties.from(Blocks.BEDROCK)));
+    public static final Block CRACKED_TALL_FOREST_DUNGEON_STAIRS = registerBlock("cracked_tall_forest_dungeon_stairs", new StairsBlock(Blocks.BEDROCK.getDefaultState(), AbstractBlock.Properties.from(Blocks.BEDROCK)));
+    public static final Block TALL_FOREST_DUNGEON_SLAB = registerBlock("tall_forest_dungeon_slab", new SlabBlock(AbstractBlock.Properties.from(Blocks.BEDROCK)));
+    public static final Block MOSSY_TALL_FOREST_DUNGEON_SLAB = registerBlock("mossy_tall_forest_dungeon_slab", new SlabBlock(AbstractBlock.Properties.from(Blocks.BEDROCK)));
+    public static final Block CRACKED_TALL_FOREST_DUNGEON_SLAB = registerBlock("cracked_tall_forest_dungeon_slab", new SlabBlock(AbstractBlock.Properties.from(Blocks.BEDROCK)));
+
+    //snow valley
+    public static final Block SNOWDROP = registerBlock("snowdrop", new SnowPlantBlock(Effects.SATURATION, 7, AbstractBlock.Properties.create(Material.PLANTS).doesNotBlockMovement().notSolid().zeroHardnessAndResistance().sound(SoundType.PLANT)));
 
     static @Nonnull Block createTeleporterBlock(String id, RegistryKey<World> worldRegistryKey) {
         Block createBlock = new TeleporterBlock(AbstractBlock.Properties.create(Material.IRON).sound(SoundType.STONE).hardnessAndResistance(2.0f, 6.0f).harvestTool(ToolType.PICKAXE).setRequiresTool(), worldRegistryKey);
