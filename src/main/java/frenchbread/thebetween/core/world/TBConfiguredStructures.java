@@ -14,7 +14,6 @@ import net.minecraft.world.gen.feature.structure.Structure;
 
 public class TBConfiguredStructures {
 
-    public static void registerConfiguredStructures() {
-        Registry<StructureFeature<?, ?>> registry = WorldGenRegistries.CONFIGURED_STRUCTURE_FEATURE;
-    }
+    public static StructureFeature<NoFeatureConfig, ? extends Structure<NoFeatureConfig>> CONFIGURED_TALL_FOREST_DUNGEON = TBStructures.TALL_FOREST_DUNGEON.get().withConfiguration(IFeatureConfig.NO_FEATURE_CONFIG);
+
 }

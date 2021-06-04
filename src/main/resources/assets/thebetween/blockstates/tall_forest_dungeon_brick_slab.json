@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "thebetween:block/tall_forest_dungeon_brick_slab"
+    },
+    "type=double": {
+      "model": "thebetween:block/tall_forest_dungeon_brick"
+    },
+    "type=top": {
+      "model": "thebetween:block/tall_forest_dungeon_brick_slab_top"
+    }
+  }
+}

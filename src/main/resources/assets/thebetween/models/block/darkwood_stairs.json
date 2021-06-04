@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/stairs",
+  "textures": {
+    "bottom": "thebetween:block/darkwood",
+    "top": "thebetween:block/darkwood",
+    "side": "thebetween:block/darkwood"
+  }
+}

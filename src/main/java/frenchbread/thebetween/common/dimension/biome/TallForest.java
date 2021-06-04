@@ -1,6 +1,7 @@
 package frenchbread.thebetween.common.dimension.biome;
 
 import frenchbread.thebetween.core.world.TBConfiguredFeatures;
+import frenchbread.thebetween.core.world.TBConfiguredStructures;
 import net.minecraft.block.Blocks;
 import net.minecraft.client.audio.BackgroundMusicTracks;
 import net.minecraft.particles.ParticleTypes;
@@ -42,10 +43,12 @@ public class TallForest extends BiomeBase{
 
 
     static {
-        GENERATION_SETTINGS.withFeature(GenerationStage.Decoration.UNDERGROUND_ORES, Feature.ORE.withConfiguration(new OreFeatureConfig(OreFeatureConfig.FillerBlockType.BASE_STONE_OVERWORLD, Blocks.IRON_ORE.getDefaultState(), 22)).range(46).square().count(22));
-        GENERATION_SETTINGS.withFeature(GenerationStage.Decoration.VEGETAL_DECORATION, TBConfiguredFeatures.TALL_FOREST_TREE);
-        GENERATION_SETTINGS.withFeature(GenerationStage.Decoration.RAW_GENERATION, Features.END_ISLAND_DECORATED);
         GENERATION_SETTINGS.withFeature(GenerationStage.Decoration.LAKES, Features.LAKE_WATER);
         GENERATION_SETTINGS.withFeature(GenerationStage.Decoration.LAKES, Features.LAKE_LAVA);
+        GENERATION_SETTINGS.withFeature(GenerationStage.Decoration.UNDERGROUND_ORES, Feature.ORE.withConfiguration(new OreFeatureConfig(OreFeatureConfig.FillerBlockType.BASE_STONE_OVERWORLD, Blocks.IRON_ORE.getDefaultState(), 22)).range(46).square().count(22));
+        GENERATION_SETTINGS.withFeature(GenerationStage.Decoration.VEGETAL_DECORATION, TBConfiguredFeatures.BLUE_GRASS_PATCH);
+        GENERATION_SETTINGS.withFeature(GenerationStage.Decoration.VEGETAL_DECORATION, TBConfiguredFeatures.BLUE_FERN_PATCH);
+        GENERATION_SETTINGS.withFeature(GenerationStage.Decoration.VEGETAL_DECORATION, TBConfiguredFeatures.TALL_FOREST_TREE);
+        GENERATION_SETTINGS.withFeature(GenerationStage.Decoration.RAW_GENERATION, Features.END_ISLAND_DECORATED);
     }
 }

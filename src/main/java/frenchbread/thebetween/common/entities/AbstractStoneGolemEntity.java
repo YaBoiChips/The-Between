@@ -22,4 +22,7 @@ public class AbstractStoneGolemEntity extends MonsterEntity {
                 .createMutableAttribute(Attributes.ATTACK_DAMAGE, 8.0D);
     }
 
+    public int getGolemType(int type){
+        return type;
+    }
 }

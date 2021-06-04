@@ -3,11 +3,13 @@ package frenchbread.thebetween.client.models;
 import com.mojang.blaze3d.matrix.MatrixStack;
 import com.mojang.blaze3d.vertex.IVertexBuilder;
 import frenchbread.thebetween.common.entities.AbstractStoneGolemEntity;
+import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.entity.model.AgeableModel;
+import net.minecraft.client.renderer.entity.model.BipedModel;
 import net.minecraft.client.renderer.model.ModelRenderer;
 import net.minecraft.util.math.MathHelper;
 
-public class StoneGolemModel <T extends AbstractStoneGolemEntity> extends AgeableModel<T> {
+public class StoneGolemModel <T extends AbstractStoneGolemEntity> extends BipedModel<T> {
     private final ModelRenderer Body;
     private final ModelRenderer Head;
     private final ModelRenderer RightArm;
@@ -15,7 +17,8 @@ public class StoneGolemModel <T extends AbstractStoneGolemEntity> extends Ageabl
     private final ModelRenderer RightLeg;
     private final ModelRenderer LeftLeg;
 
-    public StoneGolemModel() {
+    public StoneGolemModel(float modelSize) {
+        super(modelSize);
         textureWidth = 16;
         textureHeight = 16;
 

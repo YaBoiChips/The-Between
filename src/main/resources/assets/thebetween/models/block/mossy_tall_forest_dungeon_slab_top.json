@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/slab_top",
-  "textures": {
-    "bottom": "thebetween:block/mossy_tall_forest_dungeon",
-    "top": "thebetween:block/mossy_tall_forest_dungeon",
-    "side": "thebetween:block/mossy_tall_forest_dungeon"
-  }
-}

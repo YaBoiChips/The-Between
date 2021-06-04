@@ -1,11 +1,10 @@
 package frenchbread.thebetween.core;
 
 import frenchbread.thebetween.TheBetween;
+import frenchbread.thebetween.common.items.SpearItem;
 import net.minecraft.block.Block;
-import net.minecraft.item.BlockItem;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemGroup;
-import net.minecraft.item.ItemStack;
+import net.minecraft.entity.EntityType;
+import net.minecraft.item.*;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.registry.Registry;
 
@@ -37,8 +36,6 @@ public class TBItems {
         }
     };
 
-    public static final Item DARKWOOD_LOG = createBlockItem(TBBlocks.DARKWOOD_LOG, new Item.Properties().group(CREATIVE_TAB));
-    public static final Item DARKWOOD_LEAVES = createBlockItem(TBBlocks.DARKWOOD_LEAVES, new Item.Properties().group(CREATIVE_TAB));
     public static final Item TELEPORTER_BLOCK = createBlockItem(TBBlocks.BETWEEN_TELEPORTER, new Item.Properties().group(CREATIVE_TAB));
     public static final Item HELL_STONE = createBlockItem(TBBlocks.HELL_STONE, new Item.Properties().group(CREATIVE_TAB));
     public static final Item HELL_DIRT = createBlockItem(TBBlocks.HELL_DIRT, new Item.Properties().group(CREATIVE_TAB));
@@ -55,16 +52,23 @@ public class TBItems {
     public static final Item DUNGEON_KEY_2 = createItem(new Item(new Item.Properties().group(CREATIVE_TAB)), "dungeon_key_2");
     public static final Item DUNGEON_KEY_3 = createItem(new Item(new Item.Properties().group(CREATIVE_TAB)), "dungeon_key_3");
 
+    public static final Item SPEAR = createItem(new SpearItem(new Item.Properties().maxDamage(350).group(CREATIVE_TAB)), "spear");
+
     //tall forest
     public static final Item TALL_FOREST_DUNGEON_BLOCK = createBlockItem(TBBlocks.TALL_FOREST_DUNGEON_BLOCK, new Item.Properties().group(CREATIVE_TAB));
-    public static final Item MOSSY_TALL_FOREST_DUNGEON_BLOCK = createBlockItem(TBBlocks.MOSSY_TALL_FOREST_DUNGEON_BLOCK, new Item.Properties().group(CREATIVE_TAB));
     public static final Item CRACKED_TALL_FOREST_DUNGEON_BLOCK = createBlockItem(TBBlocks.CRACKED_TALL_FOREST_DUNGEON_BLOCK, new Item.Properties().group(CREATIVE_TAB));
     public static final Item TALL_FOREST_DUNGEON_STAIRS = createBlockItem(TBBlocks.TALL_FOREST_DUNGEON_STAIRS, new Item.Properties().group(CREATIVE_TAB));
-    public static final Item MOSSY_TALL_FOREST_DUNGEON_STAIRS = createBlockItem(TBBlocks.MOSSY_TALL_FOREST_DUNGEON_STAIRS, new Item.Properties().group(CREATIVE_TAB));
     public static final Item CRACKED_TALL_FOREST_DUNGEON_STAIRS = createBlockItem(TBBlocks.CRACKED_TALL_FOREST_DUNGEON_STAIRS, new Item.Properties().group(CREATIVE_TAB));
     public static final Item TALL_FOREST_DUNGEON_SLAB = createBlockItem(TBBlocks.TALL_FOREST_DUNGEON_SLAB, new Item.Properties().group(CREATIVE_TAB));
-    public static final Item MOSSY_TALL_FOREST_DUNGEON_SLAB = createBlockItem(TBBlocks.MOSSY_TALL_FOREST_DUNGEON_SLAB, new Item.Properties().group(CREATIVE_TAB));
     public static final Item CRACKED_TALL_FOREST_DUNGEON_SLAB = createBlockItem(TBBlocks.CRACKED_TALL_FOREST_DUNGEON_SLAB, new Item.Properties().group(CREATIVE_TAB));
+    public static final Item TALL_FOREST_STONE_GOLEM_SPEAR_SPAWN_EGG = createItem(new SpawnEggItem(TBEntities.TALL_FOREST_STONE_GOLEM_SPEAR, 196656, 186895, (new Item.Properties()).group(CREATIVE_TAB)), "tall_forest_stone_golem_spear_spawn_egg");
+    public static final Item TALL_FOREST_STONE_GOLEM_SPAWN_EGG = createItem(new SpawnEggItem(TBEntities.TALL_FOREST_STONE_GOLEM, 496656, 386895, (new Item.Properties()).group(CREATIVE_TAB)), "tall_forest_stone_golem_spawn_egg");
+    public static final Item DARKWOOD_LOG = createBlockItem(TBBlocks.DARKWOOD_LOG, new Item.Properties().group(CREATIVE_TAB));
+    public static final Item DARKWOOD_LEAVES = createBlockItem(TBBlocks.DARKWOOD_LEAVES, new Item.Properties().group(CREATIVE_TAB));
+    public static final Item DARKWOOD_PLANKS = createBlockItem(TBBlocks.DARKWOOD_PLANKS, new Item.Properties().group(CREATIVE_TAB));
+    public static final Item DARKWOOD_STAIRS = createBlockItem(TBBlocks.DARKWOOD_STAIRS, new Item.Properties().group(CREATIVE_TAB));
+    public static final Item DARKWOOD_SLAB = createBlockItem(TBBlocks.DARKWOOD_SLAB, new Item.Properties().group(CREATIVE_TAB));
+
 
     public static Item createItem(Item item, String id) {
         return createItem(item, TheBetween.createResource(id));

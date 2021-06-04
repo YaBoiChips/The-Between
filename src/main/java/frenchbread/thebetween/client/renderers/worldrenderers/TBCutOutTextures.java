@@ -12,6 +12,8 @@ public class TBCutOutTextures {
     public static void registerCutOuts(){
         Block[] blocks = {
                 TBBlocks.SNOWDROP.getBlock(),
+                TBBlocks.BLUE_GRASS.getBlock(),
+                TBBlocks.BLUE_FERN.getBlock()
         };
 
         Arrays.stream(blocks).forEach((block) -> RenderTypeLookup.setRenderLayer(block, RenderType.getCutoutMipped()));

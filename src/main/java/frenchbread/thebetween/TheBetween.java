@@ -1,5 +1,6 @@
 package frenchbread.thebetween;
 
+import frenchbread.thebetween.client.renderers.entities.SpearRenderer;
 import frenchbread.thebetween.client.renderers.entities.StoneGolemRenderer;
 import frenchbread.thebetween.client.renderers.worldrenderers.TBCutOutTextures;
 import frenchbread.thebetween.common.entities.AbstractStoneGolemEntity;
@@ -51,25 +52,28 @@ public class TheBetween {
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::processIMC);
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::clientSetup);
         MinecraftForge.EVENT_BUS.register(this);
+        TBStructures.init();
     }
 
     private void commonSetup(final FMLCommonSetupEvent event) {
         LOGGER.info("HELLO FROM PREINIT");
         BETWEEN_DIMENSION = RegistryKey.getOrCreateKey(Registry.WORLD_KEY, new ResourceLocation(MOD_ID, "between"));
-        event.enqueueWork(()-> {
-                    TBConfiguredFeatures.registerConfiguredFeatures();
-                    TBConfiguredStructures.registerConfiguredStructures();
-                });
+        event.enqueueWork(TBConfiguredFeatures::registerConfiguredFeatures);
         TBTrunkPlacers.registerTrunkPlacers();
         TBConfiguredSurfaceBuilders.register();
         GlobalEntityTypeAttributes.put(TBEntities.TALL_FOREST_STONE_GOLEM, AbstractStoneGolemEntity.setCustomAttributes().create());
+        GlobalEntityTypeAttributes.put(TBEntities.TALL_FOREST_STONE_GOLEM_SPEAR, AbstractStoneGolemEntity.setCustomAttributes().create());
+
     }
 
     private void clientSetup(final FMLClientSetupEvent event) {
         LOGGER.info("Got game settings {}", event.getMinecraftSupplier().get().gameSettings);
         TBCutOutTextures.registerCutOuts();
         RenderingRegistry.registerEntityRenderingHandler(TBEntities.TALL_FOREST_STONE_GOLEM, StoneGolemRenderer::new);
+        RenderingRegistry.registerEntityRenderingHandler(TBEntities.TALL_FOREST_STONE_GOLEM_SPEAR, StoneGolemRenderer::new);
+        RenderingRegistry.registerEntityRenderingHandler(TBEntities.SPEAR, SpearRenderer::new);
     }
+
 
     private void enqueueIMC(final InterModEnqueueEvent event) {
         InterModComms.sendTo(MOD_ID, "helloworld", () -> {
@@ -119,13 +123,6 @@ public class TheBetween {
             TBBiomes.biomes.forEach(preserveBiomeOrder -> event.getRegistry().register(preserveBiomeOrder.getBiome()));
             TBBiomes.biomes.clear();
             TBBiomes.biomes = null;
-        }
-        @SubscribeEvent
-        public static void registerStructures(RegistryEvent.Register<Structure<?>> event) {
-            LOGGER.debug("Registering structures...");
-            TBStructures.init();
-            TBStructures.structures.forEach(structure -> event.getRegistry().register(structure));
-            LOGGER.info("Structures registered!");
         }
         @SubscribeEvent
         public static void registerItems(RegistryEvent.Register<Item> event) {
